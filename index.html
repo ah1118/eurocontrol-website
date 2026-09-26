@@ -1,0 +1,144 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EUROCONTROL Flight Monitor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+
+        <header class="header">
+            <div>
+                <div class="eyebrow">EUROCONTROL NM B2B</div>
+                <h1>Flight Monitor</h1>
+                <p>Operational flight information and ATFM status</p>
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                PREOPS
+            </div>
+        </header>
+
+        <section class="search-card">
+            <label for="aircraft">Aircraft ID</label>
+
+            <div class="search-row">
+                <input
+                    id="aircraft"
+                    type="text"
+                    placeholder="Enter aircraft ID"
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+
+                <button id="searchButton">
+                    Search Flight
+                </button>
+            </div>
+
+            <div id="loading" class="loading hidden">
+                Contacting EUROCONTROL...
+            </div>
+
+            <div id="error" class="error hidden"></div>
+        </section>
+
+        <section id="results" class="hidden">
+
+            <div class="flight-header card">
+                <div>
+                    <span class="label">AIRCRAFT</span>
+                    <strong id="aircraftValue">—</strong>
+                </div>
+
+                <div>
+                    <span class="label">FLIGHT ID</span>
+                    <strong id="flightIdValue">—</strong>
+                </div>
+
+                <div class="route">
+                    <span class="label">ROUTE</span>
+                    <strong>
+                        <span id="departureValue">—</span>
+                        <span class="arrow">→</span>
+                        <span id="destinationValue">—</span>
+                    </strong>
+                </div>
+            </div>
+
+            <div class="ctot-card">
+                <span class="label">CALCULATED CTOT</span>
+                <div id="ctotValue">—</div>
+            </div>
+
+            <div class="grid">
+
+                <div class="card">
+                    <span class="label">EOBT</span>
+                    <strong id="eobtValue">—</strong>
+                </div>
+
+                <div class="card">
+                    <span class="label">ATFM MESSAGE</span>
+                    <strong id="atfmMessageValue">—</strong>
+                </div>
+
+                <div class="card">
+                    <span class="label">DIRECTION</span>
+                    <strong id="directionValue">—</strong>
+                </div>
+
+                <div class="card">
+                    <span class="label">ORIGINATOR</span>
+                    <strong id="originatorValue">—</strong>
+                </div>
+
+                <div class="card">
+                    <span class="label">CALCULATED TAKEOFF</span>
+                    <strong id="calculatedTakeoffValue">—</strong>
+                </div>
+
+                <div class="card">
+                    <span class="label">ESTIMATED TAKEOFF</span>
+                    <strong id="estimatedTakeoffValue">—</strong>
+                </div>
+
+                <div class="card">
+                    <span class="label">ACTUAL TAKEOFF</span>
+                    <strong id="actualTakeoffValue">—</strong>
+                </div>
+
+                <div class="card">
+                    <span class="label">ATFM DELAY</span>
+                    <strong id="delayValue">—</strong>
+                </div>
+
+                <div class="card">
+                    <span class="label">SLOT ISSUED</span>
+                    <strong id="slotValue">—</strong>
+                </div>
+
+                <div class="card">
+                    <span class="label">MOST PENALISING REGULATION</span>
+                    <strong id="regulationValue">—</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer>
+            EUROCONTROL Flight Monitor · Cloud Run API
+        </footer>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
+```
