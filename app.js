@@ -64,6 +64,7 @@ function displayFlight(data) {
 
     setValue("delayValue", data.atfm_delay);
     setValue("slotValue", data.slot_issued);
+
     setValue(
         "regulationValue",
         data.most_penalising_regulation
@@ -88,7 +89,9 @@ async function searchFlight() {
 
     try {
         const url =
-            `${API_BASE}/flight?aircraft=${encodeURIComponent(aircraft)}`;
+            API_BASE +
+            "/flight?aircraft=" +
+            encodeURIComponent(aircraft);
 
         const response = await fetch(url);
 
@@ -98,7 +101,7 @@ async function searchFlight() {
             data = await response.json();
         } catch {
             throw new Error(
-                `Server returned HTTP ${response.status}.`
+                "Server returned HTTP " + response.status
             );
         }
 
@@ -106,7 +109,7 @@ async function searchFlight() {
             const details =
                 data.details ||
                 data.error ||
-                `HTTP ${response.status}`;
+                "HTTP " + response.status;
 
             throw new Error(details);
         }
@@ -119,7 +122,7 @@ async function searchFlight() {
         if (error instanceof TypeError) {
             showError(
                 "Unable to contact the EUROCONTROL API. " +
-                "Check the API status and browser connection."
+                "Check the API connection and CORS configuration."
             );
         } else {
             showError(error.message);
@@ -132,7 +135,7 @@ async function searchFlight() {
 
 searchButton.addEventListener("click", searchFlight);
 
-aircraftInput.addEventListener("keydown", (event) => {
+aircraftInput.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         searchFlight();
     }
