@@ -1,3 +1,6 @@
+const API_BASE =
+    "https://eurocontrol-api-722236408667.us-central1.run.app";
+
 const aircraftInput = document.getElementById("aircraft");
 const searchButton = document.getElementById("searchButton");
 const loading = document.getElementById("loading");
@@ -12,11 +15,7 @@ function setValue(id, value) {
         return;
     }
 
-    if (
-        value === null ||
-        value === undefined ||
-        value === ""
-    ) {
+    if (value === null || value === undefined || value === "") {
         element.textContent = "—";
     } else {
         element.textContent = value;
@@ -154,12 +153,13 @@ async function searchFlight() {
     try {
 
         const url =
+            API_BASE +
             "/flight?aircraft=" +
             encodeURIComponent(aircraft);
 
         console.log(
-            "Requesting flight:",
-            aircraft
+            "Requesting:",
+            url
         );
 
         const response =
@@ -212,7 +212,7 @@ async function searchFlight() {
 
             showError(
                 "Unable to contact the EUROCONTROL API. " +
-                "Please check the network connection."
+                "This may be a CORS or network error."
             );
 
         } else {
